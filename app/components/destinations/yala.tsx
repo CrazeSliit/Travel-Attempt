@@ -21,7 +21,7 @@ function YalaPage() {
       duration: "4-6 hours",
       rating: 4.9,
       price: "$75",
-      image: "https://images.unsplash.com/photo-1549366021-9f761d040a94?w=600",
+      image: "https://images.unsplash.com/photo-1614027164847-1b28cfe1df60?w=600",
       description: "Yala has the highest density of leopards in the world. Spot these magnificent cats in their natural habitat.",
       highlights: ["Leopard Sightings", "Big Cats", "Photography", "Expert Guide"]
     },
@@ -43,7 +43,7 @@ function YalaPage() {
       duration: "3-5 hours",
       rating: 4.7,
       price: "$45",
-      image: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=600",
+      image: "https://images.unsplash.com/photo-1512317049220-d3c6fcaf6681?w=600",
       description: "Over 215 bird species including peacocks, hornbills, and migratory birds call Yala home.",
       highlights: ["215+ Species", "Peacocks", "Hornbills", "Migratory Birds"]
     },
@@ -54,7 +54,7 @@ function YalaPage() {
       duration: "4-5 hours",
       rating: 4.9,
       price: "$85",
-      image: "https://images.unsplash.com/photo-1549366021-9f761d040a94?w=600",
+      image: "https://images.unsplash.com/photo-1614027164847-1b28cfe1df60?w=600",
       description: "Experience the magic of Yala at dawn when wildlife is most active and lighting is perfect.",
       highlights: ["Golden Hour", "Active Wildlife", "Perfect Lighting", "Photography"]
     },
@@ -76,7 +76,7 @@ function YalaPage() {
       duration: "3-4 hours",
       rating: 4.8,
       price: "$70",
-      image: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=600",
+      image: "https://images.unsplash.com/photo-1512317049220-d3c6fcaf6681?w=600",
       description: "Discover nocturnal wildlife including fishing cats, civets, and various owl species.",
       highlights: ["Nocturnal Animals", "Fishing Cats", "Civets", "Night Photography"]
     }
@@ -125,7 +125,7 @@ function YalaPage() {
       <div 
         className="absolute inset-0 opacity-10"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1549366021-9f761d040a94?w=1920')`,
+          backgroundImage: `url('https://images.unsplash.com/photo-1614027164847-1b28cfe1df60?w=1920')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'

@@ -36,7 +36,7 @@ function SriLankaToursPage() {
       duration: "7 Days / 6 Nights",
       price: "$950",
       rating: 4.7,
-      image: "https://images.unsplash.com/photo-1549366021-9f761d040a94?w=600",
+      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600",
       highlights: ["Sigiriya", "Kandy", "Nuwara Eliya", "Galle"]
     }
   ]

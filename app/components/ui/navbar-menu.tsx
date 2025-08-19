@@ -3,6 +3,7 @@ import React from "react";
 import { motion } from "motion/react";
 import { AnimationGeneratorType } from "motion";
 import Image from "next/image";
+import Link from "next/link";
 
 const transition = {
   type: "spring" as AnimationGeneratorType,
@@ -43,11 +44,11 @@ export const MenuItem = ({
               <motion.div
                 transition={transition}
                 layoutId="active" // layoutId ensures smooth animation
-                className="bg-white dark:bg-black backdrop-blur-sm rounded-2xl overflow-hidden border border-black/[0.2] dark:border-white/[0.2] shadow-xl"
+                className="bg-white dark:bg-black backdrop-blur-sm rounded-2xl overflow-hidden border border-black/[0.2] dark:border-white/[0.2] shadow-xl max-w-screen-sm"
               >
                 <motion.div
                   layout // layout ensures smooth animation
-                  className="w-max h-full p-4"
+                  className="w-max h-full p-4 max-w-screen-sm"
                 >
                   {children}
                 </motion.div>
@@ -89,7 +90,7 @@ export const ProductItem = ({
   src: string;
 }) => {
   return (
-    <a href={href} className="flex space-x-2">
+    <Link href={href} className="flex space-x-2">
       <Image
         src={src}
         width={140}
@@ -105,7 +106,7 @@ export const ProductItem = ({
           {description}
         </p>
       </div>
-    </a>
+    </Link>
   );
 };
 
