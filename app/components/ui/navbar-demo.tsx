@@ -30,7 +30,7 @@ function Navbar({ className }: { className?: string }) {
       <div className="flex items-center justify-between w-full bg-white/80 dark:bg-black/80 backdrop-blur-md rounded-2xl border border-gray-200/20 dark:border-white/[0.2] shadow-xl px-4 py-3">
         {/* Logo/Brand */}
         <div className="flex items-center">
-            <Link href="/" className="text-xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 bg-clip-text text-transparent">
+            <Link href="/" className="text-xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 dark:from-blue-400 dark:via-purple-400 dark:to-emerald-400 bg-clip-text text-transparent">
             Sri Lanka Tours
             </Link>
         </div>
