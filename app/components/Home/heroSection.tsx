@@ -100,8 +100,8 @@ function HeroSection() {
 
   useEffect(() => {
     setIsAnimated(true)
-    // Set the first destination as background automatically
-    setBackgroundImage(destinations[0].image)
+    // Set video as default background
+    setBackgroundImage(null) // Use video instead of image
     
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % destinations.length)
@@ -134,25 +134,45 @@ function HeroSection() {
     setCurrentSlide(destinations.findIndex(d => d.id === destination.id))
   }, [destinations])
 
+  const resetToVideoBackground = useCallback(() => {
+    setBackgroundImage(null)
+  }, [])
+
   return (
     <div 
       className="min-h-screen relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900"
-      style={{
-        backgroundImage: backgroundImage ? `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url(${backgroundImage})` : undefined,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}
     >
-      {/* Enhanced Background overlay for better text readability */}
-      {backgroundImage && (
-        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/25 to-transparent backdrop-blur-[0.5px]" />
+      {/* Video Background */}
+      {!backgroundImage && (
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover z-0"
+        >
+          <source src="/286459_medium.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       )}
+
+      {/* Image Background (when destination is clicked) */}
+      {backgroundImage && (
+        <div 
+          className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat z-0"
+          style={{
+            backgroundImage: `url(${backgroundImage})`
+          }}
+        />
+      )}
+
+      {/* Enhanced Background overlay for better text readability */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-black/40 backdrop-blur-[0.5px] z-10" />
       
       {/* Navbar spacing */}
       <div className="h-20 lg:h-24"></div>
       
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-16">
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-16">
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 min-h-[calc(100vh-6rem)] items-center">{/* Improved spacing and alignment */}
         
           {/* Left Side - Enhanced Animated Text Content */}
@@ -195,6 +215,15 @@ function HeroSection() {
                 <Camera className="w-5 h-5" />
                 Virtual Tour
               </button>
+              {backgroundImage && (
+                <button 
+                  onClick={resetToVideoBackground}
+                  className="group backdrop-blur-md bg-emerald-500/20 border border-emerald-500/30 text-white px-3 py-2 rounded-lg font-medium hover:bg-emerald-500/30 transition-all duration-300 flex items-center justify-center gap-1 text-sm"
+                  aria-label="Return to video background"
+                >
+                  Video
+                </button>
+              )}
             </div>
 
             {/* Enhanced Statistics */}
@@ -203,20 +232,20 @@ function HeroSection() {
                 <div className="text-2xl lg:text-3xl font-bold mb-1 group-hover:scale-110 transition-transform bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent">
                   8+
                 </div>
-                <div className="text-sm text-slate-600 dark:text-slate-400 font-medium">UNESCO Sites</div>
+                <div className={`text-sm font-medium ${!backgroundImage ? 'text-white' : 'text-slate-600 dark:text-slate-400'}`}>UNESCO Sites</div>
               </div>
               <div className="text-center group bg-white/5 backdrop-blur-sm rounded-2xl p-4 border border-white/10 hover:bg-white/10 transition-all duration-300">
                 <div className="text-2xl lg:text-3xl font-bold mb-1 group-hover:scale-110 transition-transform bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent">
                   100K+
                 </div>
-                <div className="text-sm text-slate-600 dark:text-slate-400 font-medium">Happy Travelers</div>
+                <div className={`text-sm font-medium ${!backgroundImage ? 'text-white' : 'text-slate-600 dark:text-slate-400'}`}>Happy Travelers</div>
               </div>
               <div className="text-center group bg-white/5 backdrop-blur-sm rounded-2xl p-4 border border-white/10 hover:bg-white/10 transition-all duration-300">
                 <div className="flex items-center justify-center gap-1 mb-1">
                   <div className="text-2xl lg:text-3xl font-bold group-hover:scale-110 transition-transform bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent">4.9</div>
                   <Star className="w-5 h-5 fill-yellow-400 text-yellow-400" />
                 </div>
-                <div className="text-sm text-slate-600 dark:text-slate-400 font-medium">Average Rating</div>
+                <div className={`text-sm font-medium ${!backgroundImage ? 'text-white' : 'text-slate-600 dark:text-slate-400'}`}>Average Rating</div>
               </div>
             </div>
           </div>
@@ -356,7 +385,11 @@ function HeroSection() {
                     key={index}
                     onClick={() => {
                       setCurrentSlide(index)
-                      setBackgroundImage(destinations[index].image)
+                      if (index === 0) {
+                        setBackgroundImage(null) // Reset to video for first slide
+                      } else {
+                        setBackgroundImage(destinations[index].image)
+                      }
                     }}
                     className={`h-2 rounded-full transition-all duration-300 hover:scale-110 ${
                       currentSlide === index 
